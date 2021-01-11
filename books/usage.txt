@@ -1,0 +1,15 @@
+
+Here are the commands you can run using books.py:
+
+1. Search books by title:
+python3 books.py searchBooks title -v
+
+2. Search authors:
+python3 books.py searchAuthors name 
+
+3. Search books by year:
+python3 books.py searchBooksByYear year1 year2 -v
+
+
+
+
