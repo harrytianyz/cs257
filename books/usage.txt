@@ -4,7 +4,7 @@ Here are the commands you can run using books.py:
 1. Search books by title:
 python3 books.py --searchBooks title -v
 
-2. Search authors:
+2. Search authors and print their books:
 python3 books.py --searchAuthors name 
 
 3. Search books by year:
