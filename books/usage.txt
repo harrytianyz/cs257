@@ -8,7 +8,7 @@ python3 books.py --searchBooks title -v
 python3 books.py --searchAuthors name 
 
 3. Search books by year:
-python3 books.py --searchBooksByYear year1 year2 -v
+python3 books.py --searchBooksByYear year1-year2 -v
 
 
 
