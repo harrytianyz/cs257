@@ -37,6 +37,7 @@ def get_parsed_arguments():
   parsed_arguments = parser.parse_args(['searchBooks','AND'])
   return parsed_arguments
 
+# search by title
 def get_book_info(search_string, function):
   output = []
   titles, dict_authors, dict_years = read_csv()
@@ -53,7 +54,7 @@ def get_book_info(search_string, function):
         output.append(author + ": ")
         output.append(dict_authors[author])
   
-  # search for years
+  # search by years
   elif function == "searchBooksByYear":
     temp = search_string.split('-')
     year1 = temp[0]
