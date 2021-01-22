@@ -2,14 +2,17 @@
 Here are the commands you can run using books.py:
 
 1. Search books by title:
-python3 books.py --searchBooks title 
+python3 books.py [books] [title] 
 
 2. Search authors and print their books:
-python3 books.py --searchAuthors name 
+python3 books.py [authors] [name] 
 
 3. Search books by year:
-python3 books.py --searchBooksByYear year1-year2 
+python3 books.py [year] [year1-year2] 
 
-
+--book, -b S                    print a list of books whose titles contain S (case-insensitive).
+--author, -a S                  print a list of authors whose names contain S (case-insensitive). For each such author, print a list of the author's books.
+--year, -y year1-year2          print a list of books published between years A and B, inclusive.
+--help, -h                      show help message 
 
 
