@@ -41,6 +41,7 @@ def get_parsed_arguments():
 def get_book_info(search_string, function):
   output = []
   titles, dict_authors, dict_years = read_csv()
+  
   # search for titles
   if function == "books" or fuction == "b":
     for title in titles:
@@ -60,7 +61,7 @@ def get_book_info(search_string, function):
     year1 = temp[0]
     year2 = temp[1]
     
-    #swaps years if year1 is bigger
+    # swaps years if year1 is bigger
     tempYear = year1
     if year1 > year2:
       year1 = year2
