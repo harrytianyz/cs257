@@ -59,6 +59,8 @@ def get_book_info(search_string, function):
     temp = search_string.split('-')
     year1 = temp[0]
     year2 = temp[1]
+   
+    
     for year in dict_years:
       if int(year) >= int(year1) and int(year) <= int(year2):
         output.append(dict_years[year])
@@ -77,7 +79,7 @@ def main():
     for item in output:
       print(item)
   else:
-    print("We could't find results that match your selection")
+    print("We couldn't find results that match your selection")
 
 if __name__ == '__main__':
     main()
