@@ -42,20 +42,20 @@ def get_book_info(search_string, function):
   output = []
   titles, dict_authors, dict_years = read_csv()
   # search for titles
-  if function == "searchBooks":
+  if function == "books" or fuction == "b":
     for title in titles:
       if search_string.lower() in title.lower():
         output.append(title)
 
   # search for authors
-  elif function == "searchAuthors":
+  elif function == "authors" or function == "a":
     for author in dict_authors:
       if search_string.lower() in author.lower():
         output.append(author + ": ")
         output.append(dict_authors[author])
   
   # search by years
-  elif function == "searchBooksByYear":
+  elif function == "year" or function == "y:
     temp = search_string.split('-')
     year1 = temp[0]
     year2 = temp[1]
