@@ -29,7 +29,7 @@ def read_csv():
 
   return titles, dict_authors, dict_years
 
-# argparse
+# set up arguments for argparse
 def get_parsed_arguments():
   parser = argparse.ArgumentParser(description='Searching through books.csv.')
   parser.add_argument("function", help = "enter searchBooks, searchAuthors, or searchBooksByYear")
@@ -37,7 +37,7 @@ def get_parsed_arguments():
   parsed_arguments = parser.parse_args()
   return parsed_arguments
 
-# search by title
+# search books by title
 def get_book_info(search_string, function):
   output = []
   titles, dict_authors, dict_years = read_csv()
@@ -47,14 +47,14 @@ def get_book_info(search_string, function):
       if search_string.lower() in title.lower():
         output.append(title)
 
-  # search for authors
+  # search books by author
   elif function == "authors" or function == "a":
     for author in dict_authors:
       if search_string.lower() in author.lower():
         output.append(author + ": ")
         output.append(dict_authors[author])
   
-  # search by years
+  # search books by years
   elif function == "year" or function == "y:
     temp = search_string.split('-')
     year1 = temp[0]
@@ -78,9 +78,9 @@ def get_book_info(search_string, function):
   return output
 
 def main():
-  arguments = get_parsed_arguments()
-  output = get_book_info(arguments.search_string, arguments.function)
-  if output:
+  arguments = get_parsed_arguments() # get arguments
+  output = get_book_info(arguments.search_string, arguments.function) # get output based on arguments
+  if output: #print output if found
     for item in output:
       print(item)
   else:
