@@ -59,7 +59,12 @@ def get_book_info(search_string, function):
     temp = search_string.split('-')
     year1 = temp[0]
     year2 = temp[1]
-   
+    
+    #swaps years if year1 is bigger
+    tempYear = year1
+    if year1 > year2:
+      year1 = year2
+      year2 = tempYear
     
     for year in dict_years:
       if int(year) >= int(year1) and int(year) <= int(year2):
