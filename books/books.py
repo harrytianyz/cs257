@@ -34,7 +34,7 @@ def get_parsed_arguments():
   parser = argparse.ArgumentParser(description='Searching through books.csv.')
   parser.add_argument("function", help = "enter searchBooks, searchAuthors, or searchBooksByYear")
   parser.add_argument("search_string", help = "the string you want to search for")
-  parsed_arguments = parser.parse_args(['searchBooks','AND'])
+  parsed_arguments = parser.parse_args()
   return parsed_arguments
 
 # search by title
