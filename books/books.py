@@ -43,7 +43,7 @@ def get_book_info(search_string, function):
   titles, dict_authors, dict_years = read_csv()
   
   # search for titles
-  if function == "books" or fuction == "b":
+  if function == "books" or function == "b":
     for title in titles:
       if search_string.lower() in title.lower():
         output.append(title)
