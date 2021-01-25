@@ -23,35 +23,24 @@ def create_NOC_csv():
     return NOC_dict
   
 def create_athletes_csv():
-    class Athlete():
-        def __init__(self, athlete_id, name, sex, height, weight):
-            self.athlete_id = athlete_id
-            self.name = name
-            self.sex = sex
-            self.height = height
-            self.weight = weight
-
     athletes = {}
 
     # read from csv and only store name, sex, height, weight
     reader = csv.reader(open('athlete_events.csv'))
     next(reader)
     for row in reader:
-        athlete_id = row[0]
+        athlete_id = int(row[0])
         name = row[1]
         sex = row[2]
-        height = row[4]
-        weight = row[5]
+        height = int(row[4])
+        weight = int(row[5])
         if athlete_id not in athletes:
-            athlete = Athlete(athlete_id, name, sex, height, weight)
-            athletes[athlete_id] = athlete
+            athletes[athlete_id] = [athlete_id, name, sex, height, weight]
 
     # write into new csv
     writer = csv.writer(open('athletes_info.csv','w'))
-    for athlete_id in athletes:
-        athlete = athletes[athlete_id]
-        row = [athlete.name, athlete.sex, athlete.height, athlete.weight]
-        writer.writerow(row) 
+    for athlete in athletes.values():
+        writer.writerow(athlete) 
 
     reader.close()
     writer.close()
@@ -66,7 +55,7 @@ def create_competitions_csv():
     game_ID = 1
     for row in reader:
         game = row[8]
-        year = row[9]
+        year = int(row[9])
         season = row[10]
         city = row[11]
         if game not in competitions:
