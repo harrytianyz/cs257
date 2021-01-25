@@ -18,7 +18,7 @@ CREATE TABLE athletes (
 CREATE TABLE athletes_NOC_age_competitions (
     athletes_id integer,
     NOC_id integer,
-    age_id integer,
+    age integer,
     competitions_id integer,
 );
 
