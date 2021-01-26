@@ -70,7 +70,7 @@ def create_competitions_csv():
         season = row[10]
         city = row[11]
         if game not in competitions:
-            competitions[game] = [year, season, city, game_ID]
+            competitions[game] = [game_ID, year, season, city]
             game_ID += 1
 
     # write into new csv
@@ -82,6 +82,27 @@ def create_competitions_csv():
 
     # reader.close()
     # writer.close()
+
+def create_athletes_NOC_age_competitions(NOC_dict, competitions):
+	
+	with open('athletes_NOC_age_competitions.csv', 'w', newline='') as csvfile: 
+		writer = csv.writer(csvfile)
+		reader = csv.reader(open('athlete_events.csv'))
+		next(reader)
+		for row in reader:
+			age = row[3]
+			athlete_id = row[0]
+			game = row[8]
+			NOC = row[7]
+			competition_id = competitions[game][0]
+			NOC_id = NOC_dict[NOC]
+			writer.writerow([athlete_id, NOC_id, age, competition_id])
+	
+def create_events():
+	class Event(sport, event, competitions):
+		
+	
+	reader = csv.reader(open('athlete_events.csv'))
 
 def main():
     create_NOC_csv()
