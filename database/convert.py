@@ -82,8 +82,10 @@ def create_competitions_csv():
 
     # reader.close()
     # writer.close()
+    
+    return competitions
 
-def create_athletes_NOC_age_competitions(NOC_dict, competitions):
+def create_athletes_NOC_age_competitions_csv(NOC_dict, competition):
 	
 	with open('athletes_NOC_age_competitions.csv', 'w', newline='') as csvfile: 
 		writer = csv.writer(csvfile)
@@ -94,19 +96,79 @@ def create_athletes_NOC_age_competitions(NOC_dict, competitions):
 			athlete_id = row[0]
 			game = row[8]
 			NOC = row[7]
-			competition_id = competitions[game][0]
+			print(game)
+			print(competition)
+			print(competition[game])
+			competition_id = competition[game][0]
 			NOC_id = NOC_dict[NOC]
 			writer.writerow([athlete_id, NOC_id, age, competition_id])
 	
-def create_events():
-	class Event(sport, event, competitions):
-		
+def create_events_csv(competitions):
+	events = []
 	
-	reader = csv.reader(open('athlete_events.csv'))
+	class Event():
+		def __init__(self, sport, event, competition_id, event_id):
+			self.sport = sport
+			self.event = event
+			self.competition_id = competition_id
+			self.event_id = event_id
+			self.gold = None
+			self.silver = None
+			self.bronze = None
+		
+		def set_gold_id(athlete_id):
+			self.gold = athlete_id
+		def set_silver_id(athlete_id):
+			self.silver = athlete_id
+		def set_bronze_id(athlete_id):
+			self.bronze = athlete_id
+	
+		def __eq__(self, other):
+			return self.competition_id == other.competition_id and self.event == other.event
+			
+	with open('athletes_events.csv', 'w', newline='') as csvfile:
+		writer = csv.writer(csvfile)
+		reader = csv.reader(open('athlete_events.csv'))
+		next(reader)
+		event_id = 1
+		for row in reader:
+			sport = row[12]
+			event_name = row[13]
+			game = row[8]
+			competition_id = competitions[game][0]
+			medal = row[14]
+			athlete_id = row[0]
+			event = Event(sport, event_name, competition_id, event_id)
+		
+			event_exists = False
+			for ev in events:
+				if ev == event:
+					event = ev
+					event_exists = True
+					break
+			if medal.lowercase() == 'gold':
+				event.set_gold_id(athlete_id)
+			elif medal.lowercase() == 'silver':
+				event.set_silver_id(athlete_id)
+			elif medal.lowercase() == 'bronze':
+				event.set_bronze_id(athlete_id)
+			if not event_exists:
+				events.append[event]
+				event_id += 1
+			writer.writerow([athlete_id, event.event_id])
+
+	with open('events.csv', 'w', newline='') as csvfile: 
+		writer = csv.writer(csvfile)
+		for event in events:
+			writer.writerow([event.event_id, event.competition_id, event.sport, event.event, event.gold, event.silver, event.bronze])
+
 
 def main():
-    create_NOC_csv()
+    NOC = create_NOC_csv()
     create_athletes_csv()
-    create_competitions_csv()
+    competitions = create_competitions_csv()
+    create_athletes_NOC_age_competitions_csv(NOC, competitions)
+    create_events_csv(competitions)
+    
 
 main()

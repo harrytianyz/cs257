@@ -37,3 +37,8 @@ CREATE TABLE events (
     bronze integer,
 );
 
+CREATE TABLE athletes_events (
+	athletes_id integer,
+	events_id integer
+);
+
