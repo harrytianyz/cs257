@@ -95,7 +95,7 @@ def create_athletes_NOC_age_competitions_csv(NOC_dict, competition):
 def create_events_csv(competitions):
     ''' 
         creates athletes_events.csv that links athlete id to event id
-        creates events.csv that stores event_id, competition_id, sport, event, and the athlete_id of the gold, silver, and bronze winners
+        creates events_info.csv that stores event_id, competition_id, sport, event, and the athlete_id of the gold, silver, and bronze winners
     '''
     events = []
 	
@@ -154,7 +154,7 @@ def create_events_csv(competitions):
 
             writer.writerow([athlete_id, event.event_id])
 
-    with open('events.csv', 'w', newline='') as csvfile: 
+    with open('events_info.csv', 'w', newline='') as csvfile: 
         writer = csv.writer(csvfile)
         for event in events:
             writer.writerow([event.event_id, event.competition_id, event.sport, event.event, event.gold, event.silver, event.bronze])
