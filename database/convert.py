@@ -4,20 +4,23 @@ def create_NOC_csv():
     ''' creates a new noc.csv by removing the header and adding a NOC_ID field '''
 
     reader = csv.reader(open('noc_regions.csv'))
-    writer = csv.writer(open('noc.csv','w'))
+    # writer = csv.writer(open('noc.csv','w'))
     next(reader)
 
     NOC_dict = {}
     NOC_ID = 1
-    for NOC_row in reader:
-        NOC = NOC_row[0]
-        NOC_dict[NOC] = NOC_ID
-        NOC_ID += 1
 
-        # ID_row = NOC_row.insert(0, NOC_ID)
-        ID_row = [NOC_ID, NOC_row[0],  NOC_row[1],  NOC_row[2]]
-        writer.writerow(ID_row)
+    with open('noc.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
 
+        for NOC_row in reader:
+            NOC = NOC_row[0]
+            NOC_dict[NOC] = NOC_ID
+
+            NOC_row.insert(0, NOC_ID)
+            writer.writerow(NOC_row)
+
+            NOC_ID += 1
     # reader.close()
     # writer.close()
 
@@ -43,9 +46,12 @@ def create_athletes_csv():
             athletes[athlete_id] = [athlete_id, name, sex, height, weight]
 
     # write into new csv
-    writer = csv.writer(open('athletes_info.csv','w'))
-    for athlete in athletes.values():
-        writer.writerow(athlete) 
+    
+    # writer = csv.writer(open('athletes_info.csv','w'))
+    with open('athletes_info.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        for athlete in athletes.values():
+            writer.writerow(athlete) 
 
     # reader.close()
     # writer.close()
@@ -68,9 +74,11 @@ def create_competitions_csv():
             game_ID += 1
 
     # write into new csv
-    writer = csv.writer(open('competitions_info.csv','w'))
-    for game in competitions.values():
-        writer.writerow(game) 
+    # writer = csv.writer(open('competitions_info.csv','w'))
+    with open('competitions_info.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        for game in competitions.values():
+            writer.writerow(game) 
 
     # reader.close()
     # writer.close()
