@@ -1,6 +1,6 @@
 CREATE TABLE countries (
     id integer,
-    NOC text,
+    noc text,
     region text,
     notes text
 );
@@ -22,7 +22,7 @@ CREATE TABLE competitions (
 
 CREATE TABLE athletes_countries_age_competitions (
     athletes_id integer,
-    NOC_id integer,
+    noc_id integer,
     age integer,
     competitions_id integer
 );
