@@ -9,7 +9,7 @@ def create_countries_csv():
         NOC_dict = {}
         NOC_ID = 1
 
-        with open('noc.csv', 'w', newline='') as csvfile:
+        with open('countries.csv', 'w', newline='') as csvfile:
             writer = csv.writer(csvfile)
 
             for NOC_row in reader:
@@ -27,7 +27,7 @@ def create_athletes_csv():
     ''' creates athletes_info.csv that stores an athlete's id, name, sex, height, weight '''
     athletes = {}
 
-    with open('athlete_events.csv')) as csvfile:
+    with open('athlete_events.csv') as csvfile:
         reader =  csv.reader(csvfile)
         next(reader)
         for row in reader:
@@ -49,7 +49,7 @@ def create_athletes_csv():
             if athlete_id not in athletes:
                 athletes[athlete_id] = [athlete_id, name, sex, height, weight]
 
-    with open('athletes_info.csv', 'w', newline='') as csvfile:
+    with open('athletes.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         for athlete in athletes.values():
             writer.writerow(athlete) 
@@ -71,7 +71,7 @@ def create_competitions_csv():
                 competitions[game] = [game_ID, year, season, city]
                 game_ID += 1
 
-    with open('competitions_info.csv', 'w', newline='') as csvfile:
+    with open('competitions.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         for game in competitions.values():
             writer.writerow(game) 
@@ -88,6 +88,8 @@ def create_athletes_countries_age_competitions_csv(NOC_dict, competition):
         for row in reader:
             athlete_id = row[0]
             age = row[3]
+            if age == 'NA':
+                age = 'NULL'
             game = row[8]
             NOC = row[7]
             competition_id = competition[game][0]
@@ -162,7 +164,7 @@ def create_events_csv(competitions):
 
                 writer.writerow([athlete_id, event.event_id])
 
-    with open('events_info.csv', 'w', newline='') as csvfile: 
+    with open('events.csv', 'w', newline='') as csvfile: 
         writer = csv.writer(csvfile)
         for event in events:
             writer.writerow([event.event_id, event.competition_id, event.sport, event.event, event.gold, event.silver, event.bronze])
