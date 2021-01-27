@@ -1,6 +1,6 @@
 import csv
 
-def create_NOC_csv():
+def create_countries_csv():
     ''' creates noc.csv by adding a NOC_ID field '''
 
     reader = csv.reader(open('noc_regions.csv'))
@@ -71,7 +71,7 @@ def create_competitions_csv():
 
     return competitions
 
-def create_athletes_NOC_age_competitions_csv(NOC_dict, competition):
+def create_athletes_countries_age_competitions_csv(NOC_dict, competition):
     ''' creates csv that links athlete id to their age, game, and NOC'''
 	
     with open('athletes_NOC_age_competitions.csv', 'w', newline='') as csvfile: 
@@ -160,10 +160,10 @@ def create_events_csv(competitions):
             writer.writerow([event.event_id, event.competition_id, event.sport, event.event, event.gold, event.silver, event.bronze])
 
 def main():
-    NOC = create_NOC_csv()
+    countries = create_countries_csv()
     create_athletes_csv()
     competitions = create_competitions_csv()
-    create_athletes_NOC_age_competitions_csv(NOC, competitions)
+    create_athletes_countries_age_competitions_csv(countries, competitions)
     create_events_csv(competitions)
     
 main()

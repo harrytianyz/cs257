@@ -1,8 +1,8 @@
-CREATE TABLE NOC (
+CREATE TABLE countries (
     id integer,
     NOC text,
     region text,
-    notes text,
+    notes text
 );
 
 CREATE TABLE athletes (
@@ -10,21 +10,21 @@ CREATE TABLE athletes (
     name text,
     sex text,
     height integer,
-    weight integer,
+    weight decimal
 );
 
 CREATE TABLE competitions (
     id integer,
     year integer,
     season text,
-    city text,
+    city text
 );
 
-CREATE TABLE athletes_NOC_age_competitions (
+CREATE TABLE athletes_countries_age_competitions (
     athletes_id integer,
     NOC_id integer,
     age integer,
-    competitions_id integer,
+    competitions_id integer
 );
 
 CREATE TABLE events (
@@ -34,7 +34,7 @@ CREATE TABLE events (
     event text,
     gold integer,
     silver integer,
-    bronze integer,
+    bronze integer
 );
 
 CREATE TABLE athletes_events (
