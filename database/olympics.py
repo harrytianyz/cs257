@@ -107,7 +107,7 @@ def get_parsed_arguments():
     
     parser.add_argument('-g', '--gold', 
                         metavar='athlete', 
-                        help='List all the gold medals won by a specified athelete')
+                        help='List all the gold medals won by a specified athelete. Enter the full name of the athlete in quotations.')
     
     parsed_arguments = parser.parse_args()
 
@@ -120,7 +120,7 @@ def main():
         from config import user
         from config import password
     except Exception as e:
-        print("Missing config file. In this directory, create config.py:\n user = <yourusername> \n password = <yourdatabasepassword>")
+        print("Missing config file. In this directory, create config.py:\n  user = <yourusername> \n    password = <yourdatabasepassword>")
         exit()
     database = 'olympics'
 
