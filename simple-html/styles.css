@@ -1,13 +1,13 @@
 /*
-   For use with sample5.html
-   Jeff Ondich, 3 May 2016
+   For use with index.html
+   Harry Tian
 */
 
 body {
-    margin: 20px;
+    margin: 30px;
 }
 
-#animals {
+#panels {
     height: 500px;
     width: 100%;
 }
@@ -16,7 +16,7 @@ body {
     width: 100%;
     height: 25%;
     float:left;
-    font-size: 44pt;
+    font-size: 30pt;
     color: yellow;
     background-color: blue;
 }
@@ -25,7 +25,7 @@ body {
     width: 30%;
     height: 75%;
     float:left;
-    font-size: 44pt;
+    font-size: 30pt;
     color: blue;
     background-color: #aa0000;
 }
@@ -34,7 +34,7 @@ body {
     width: 70%;
     height: 75%;
     float:left;
-    font-size: 44pt;
+    font-size: 30pt;
     color: red;
     background-color: #cccc00;
 }
